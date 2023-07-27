@@ -5,12 +5,9 @@ const HistoryPlayerCard = ({ id, year, title, description }: HistoryPlayerCardPr
   return (
     <div className={styles.historyPlayerCard}>
       {/* img */}
-      <h3>{title}</h3>
-      {
-        /* code goes here
-          card should display all props
-      */
-      }
+      <h3>{title}</h3>      
+      {year}
+      {description}     
     </div>
   )
 }
