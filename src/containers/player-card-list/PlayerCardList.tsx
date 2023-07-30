@@ -1,39 +1,21 @@
+import { type UniqueIdentifier } from '@dnd-kit/core'
 import { HistoryPlayerCard, type HistoryPlayerCardProps } from '../history-player-card'
 import styles from './styles.module.scss'
+import { SortableContainer } from '../sortable'
+import { SortableContext, horizontalListSortingStrategy } from '@dnd-kit/sortable'
 
-// mock player cards
-const playerCards: HistoryPlayerCardProps[] = [
-  {
-    id: '1',
-    title: 'Pot',
-    description: 'Pot to boil water',
-    year: 1800,
-    bc: false
-  },
-  {
-    id: '2',
-    title: 'Wheel',
-    description: 'really helps to drive',
-    year: 1300,
-    bc: false
-  },
-  {
-    id: '3',
-    title: 'Sugar',
-    description: 'makes tea tasty',
-    year: 1200,
-    bc: false
-  }
-]
+type PlayerCardListProps = { id: UniqueIdentifier, items: HistoryPlayerCardProps[] }
 
 // display a list of player cards
-const PlayerCardList = () => {
+const PlayerCardList = ({ id, items }: PlayerCardListProps) => {
   return (
-    <div className={styles.playerCardList}>
-      {playerCards.map((playerCard) => (
-        <HistoryPlayerCard key={playerCard.id} {...playerCard} />
-      ))}
-    </div>
+    <SortableContainer id={id} items={items} className={styles.playerCardList}>
+      <SortableContext items={items} strategy={horizontalListSortingStrategy}>
+        {items.map((playerCard) => (
+          <HistoryPlayerCard key={playerCard.id} {...playerCard} />
+        ))}
+      </SortableContext>
+    </SortableContainer>
   )
 }
 

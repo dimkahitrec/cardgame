@@ -1,0 +1,10 @@
+.fieldCardList {
+  // display: grid;
+  // grid-template-columns: repeat(4, 1fr);
+  // grid-column-gap: 0px;
+  // grid-template-rows: 100px 300px;
+  // grid-row-gap: 0px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}

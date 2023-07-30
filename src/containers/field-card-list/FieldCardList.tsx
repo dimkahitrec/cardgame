@@ -1,94 +1,19 @@
-import { DndContext, useSensors, type UniqueIdentifier, closestCenter, useSensor, MouseSensor } from '@dnd-kit/core'
-import { CSS } from '@dnd-kit/utilities'
-import { SortableContext, arrayMove, rectSortingStrategy, useSortable } from '@dnd-kit/sortable'
-import { useEffect, useState } from 'react'
-// import {  } from '@dnd-kit/sortable'
-type Card = {
-  id: UniqueIdentifier
-  number: number
-}
-const fieldList: Card[] = []
+import { type UniqueIdentifier } from '@dnd-kit/core'
+import { type HistoryPlayerCardProps } from '../history-player-card'
+import { SortableContainer } from '../sortable'
+import { SortableContext, rectSwappingStrategy } from '@dnd-kit/sortable'
+import styles from './styles.module.scss'
+import { HistoryFieldCard } from '../history-field-card'
 
-const playerList: Card[] = []
+type FieldListProps = { id: UniqueIdentifier, items: HistoryPlayerCardProps[] }
 
-for (let i = 1; i < 10; i++) {
-  fieldList.push({
-    id: 'field' + i.toString(),
-    number: i
-  })
-  playerList.push({
-    id: i + 10,
-    number: i + 10
-  })
-}
-
-// card
-const FieldCard = ({ number, id }: Card) => {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition
-  } = useSortable({ id })
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-    margin: '20px',
-    border: '1px solid #fff',
-    padding: '10px'
-  }
-
+const FieldCardList = ({ id, items }: FieldListProps) => {
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <div>FieldCard {number}</div>
-    </div>
-  )
-}
-
-const FieldCardList = () => {
-  const [items, setItems] = useState<Card[]>(fieldList)
-  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null)
-  const getIndex = (id: UniqueIdentifier) => items.map(({ id }) => id).indexOf(id)
-
-  const activeIndex = activeId ? getIndex(activeId) : -1
-
-  const sensors = useSensors(useSensor(MouseSensor))
-
-  useEffect(() => {
-    console.log('activeId', activeId)
-  }, [activeId])
-
-  return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragStart={({ active }) => {
-        if (!active) {
-          return
-        }
-
-        setActiveId(active.id)
-      }}
-
-      onDragEnd={({ over }) => {
-        setActiveId(null)
-
-        if (over) {
-          const overIndex = getIndex(over.id)
-          if (activeIndex !== overIndex) {
-            console.log('overIndex', overIndex, activeIndex, items)
-            setItems((items) => arrayMove(items, activeIndex, overIndex))
-          }
-        }
-      }}
-      onDragCancel={() => { setActiveId(null) }}
-    >
-      <SortableContext items={items} strategy={rectSortingStrategy}>
-        {items.map(({ id, number }) => (<FieldCard key={id} id={id} number={number} />))}
+    <SortableContainer id={id} items={items} className={styles.fieldCardList}>
+      <SortableContext items={items} strategy={rectSwappingStrategy}>
+        {items.map((fieldCard) => (<HistoryFieldCard key={fieldCard.id} {...fieldCard} />))}
       </SortableContext>
-    </DndContext>
+    </SortableContainer>
   )
 }
 
