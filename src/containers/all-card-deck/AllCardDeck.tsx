@@ -1,16 +1,12 @@
-import { type AllCardDeck as AllCardDeckProps } from './types';
+import { type AllCardDeck as AllCardDeckProps } from './types'
 // import styles from '../all-card-deck/';
-// import React from 'react';
 import styles from '../history-player-card/styles.module.scss'
 
-const AllCardDeck = ( { id, title, counter } : AllCardDeckProps) => {
+const AllCardDeck = ({ id, title, counter }: AllCardDeckProps) => {
     return (
         <div className={styles.historyPlayerCard}>
-            {
-            }
-                {title}
-                {counter}
-            
+            {title}
+            {counter}
         </div>
     )
 }
@@ -22,3 +18,4 @@ export type {
 export default {
     AllCardDeck
 }
+

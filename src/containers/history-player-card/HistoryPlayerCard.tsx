@@ -4,22 +4,19 @@ import styles from './styles.module.scss'
 const HistoryPlayerCard = ({ id, year, title, description }: HistoryPlayerCardProps) => {
   return (
     <div className={styles.historyPlayerCard}>
-      {
-        <div className={styles.fixedphoto}>
-        <img src={'../../photoOfCards/' + title + '.jpg'} className={styles.fixedPhotoBorder} width={245} height={180}/>
-        </div>
-      }
-      <div className={styles.groupTitleYear}>
-        <div className={styles.titleOfCard}>
+      <div className={styles.photo}>
+      </div>
+      <div className={styles.wrapTitleYear}>
+        <h5>
           {title}
-        </div>
-        <div className={styles.yearOfCard}>
+        </h5>
+        <h5>
           {year}
-        </div>
+        </h5>
       </div>
-      <div className={styles.description}>   
+      <p className={styles.description}>
         {description}
-      </div>
+      </p>
     </div>
   )
 }
