@@ -13,21 +13,12 @@ const HistoryPlayerCard = ({
   return (
     <SortableCard id={id} disabled={false}>
       <div className={styles.historyPlayerCard}>
-        {
-          <div className={styles.fixedphoto}>
-            <img
-              src={"../../photoOfCards/" + title + ".jpg"}
-              className={styles.fixedPhotoBorder}
-              width={245}
-              height={180}
-            />
-          </div>
-        }
-        <div className={styles.groupTitleYear}>
-          <div className={styles.titleOfCard}>{title}</div>
-          <div className={styles.yearOfCard}>{year}</div>
+        <div className={styles.photo}></div>
+        <div className={styles.wrapTitleYear}>
+          <h5>{title}</h5>
+          <h5>{year}</h5>
         </div>
-        <div className={styles.description}>{description}</div>
+        <p className={styles.description}>{description}</p>
       </div>
     </SortableCard>
   )
