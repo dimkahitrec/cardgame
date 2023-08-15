@@ -1,1 +1,1 @@
-export * from './AllCardName' 
+export * from './AllCardDeck' 
