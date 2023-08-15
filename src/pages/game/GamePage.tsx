@@ -1,19 +1,26 @@
-import { DndContext, useSensors, type UniqueIdentifier, useSensor, MouseSensor, MeasuringStrategy } from '@dnd-kit/core'
-import { FieldCardList } from '../../containers/field-card-list'
-import { PlayerCardList } from '../../containers/player-card-list'
-import { MockFieldCards, MockPlayerCards } from '../../mock'
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { type GameListMap, GameListTypes } from '../../types'
-import { useCollisionDetectionStrategy } from './hooks/use-collision-detection-strategy'
-import { findContainer } from './helpers/findContainer'
-import { arrayMove } from '@dnd-kit/sortable'
-import styles from './styles.module.scss'
+import {
+  DndContext,
+  useSensors,
+  type UniqueIdentifier,
+  useSensor,
+  MouseSensor,
+  MeasuringStrategy,
+} from "@dnd-kit/core"
+import { FieldCardList } from "../../containers/field-card-list"
+import { PlayerCardList } from "../../containers/player-card-list"
+import { MockFieldCards, MockPlayerCards } from "../../mock"
+import { useCallback, useEffect, useRef, useState } from "react"
+import { type GameListMap, GameListTypes } from "../../types"
+import { useCollisionDetectionStrategy } from "./hooks/use-collision-detection-strategy"
+import { findContainer } from "./helpers/findContainer"
+import { arrayMove } from "@dnd-kit/sortable"
+import styles from "./styles.module.scss"
 
 // init state
 // todo: use cards from backend and shuffle them
 const gameListMap: GameListMap = {
   [GameListTypes.Player]: MockPlayerCards,
-  [GameListTypes.Field]: MockFieldCards
+  [GameListTypes.Field]: MockFieldCards,
 }
 
 const GamePage = () => {
@@ -25,10 +32,19 @@ const GamePage = () => {
   const sensors = useSensors(useSensor(MouseSensor))
 
   const collisionDetectionStrategy = useCollisionDetectionStrategy({
-    items, activeId, recentlyMovedToNewContainer, lastOverId, onLastOverIdChange: (v) => { lastOverId.current = v }
+    items,
+    activeId,
+    recentlyMovedToNewContainer,
+    lastOverId,
+    onLastOverIdChange: (v) => {
+      lastOverId.current = v
+    },
   })
 
-  const findContainerId = useCallback((id: UniqueIdentifier) => findContainer(id, items), [items])
+  const findContainerId = useCallback(
+    (id: UniqueIdentifier) => findContainer(id, items),
+    [items]
+  )
 
   useEffect(() => {
     requestAnimationFrame(() => {
@@ -41,8 +57,8 @@ const GamePage = () => {
       sensors={sensors}
       measuring={{
         droppable: {
-          strategy: MeasuringStrategy.Always
-        }
+          strategy: MeasuringStrategy.Always,
+        },
       }}
       collisionDetection={collisionDetectionStrategy}
       onDragStart={({ active }) => {
@@ -62,7 +78,11 @@ const GamePage = () => {
         const overContainer = findContainerId(overId)
         const activeContainer = findContainerId(active.id)
 
-        if (!overContainer || !activeContainer || overContainer === activeContainer) {
+        if (
+          !overContainer ||
+          !activeContainer ||
+          overContainer === activeContainer
+        ) {
           return
         }
 
@@ -70,7 +90,9 @@ const GamePage = () => {
           const activeItems = items[activeContainer]
           const overItems = items[overContainer]
           const overIndex = overItems.findIndex((item) => item.id === overId)
-          const activeIndex = activeItems.findIndex((item) => item.id === active.id)
+          const activeIndex = activeItems.findIndex(
+            (item) => item.id === active.id
+          )
 
           let newIndex: number
 
@@ -81,7 +103,7 @@ const GamePage = () => {
               over &&
               active.rect.current.translated &&
               active.rect.current.translated.top >
-              over.rect.top + over.rect.height
+                over.rect.top + over.rect.height
 
             const modifier = isBelowOverItem ? 1 : 0
 
@@ -102,8 +124,8 @@ const GamePage = () => {
               ...items[overContainer].slice(
                 newIndex,
                 items[overContainer].length
-              )
-            ]
+              ),
+            ],
           }
         })
       }}
@@ -125,8 +147,12 @@ const GamePage = () => {
         const overContainer = findContainerId(overId)
 
         if (overContainer) {
-          const activeIndex = items[activeContainer].findIndex(item => item.id === active.id)
-          const overIndex = items[overContainer].findIndex(item => item.id === overId)
+          const activeIndex = items[activeContainer].findIndex(
+            (item) => item.id === active.id
+          )
+          const overIndex = items[overContainer].findIndex(
+            (item) => item.id === overId
+          )
 
           if (activeIndex !== overIndex) {
             setItems((items) => ({
@@ -135,27 +161,33 @@ const GamePage = () => {
                 items[overContainer],
                 activeIndex,
                 overIndex
-              )
+              ),
             }))
           }
         }
 
         setActiveId(null)
       }}
-      onDragCancel={() => { setActiveId(null) }}
+      onDragCancel={() => {
+        setActiveId(null)
+      }}
     >
       <div className={styles.gameScreen}>
         <div className={styles.fieldListWrap}>
-          <FieldCardList id='field-card-list' items={items[GameListTypes.Field]} />
+          <FieldCardList
+            id="field-card-list"
+            items={items[GameListTypes.Field]}
+          />
         </div>
         <div className={styles.playerListWrap}>
-          <PlayerCardList id='player-card-list' items={items[GameListTypes.Player]} />
+          <PlayerCardList
+            id="player-card-list"
+            items={items[GameListTypes.Player]}
+          />
         </div>
       </div>
-    </DndContext >
+    </DndContext>
   )
 }
 
-export {
-  GamePage
-}
+export { GamePage }
