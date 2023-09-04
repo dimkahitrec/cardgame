@@ -1,29 +1,32 @@
-import { HistoryPlayerCard, type HistoryPlayerCardProps } from '../history-player-card'
-import styles from './styles.module.scss'
+import {
+  HistoryPlayerCard,
+  type HistoryPlayerCardProps,
+} from "../history-player-card"
+import styles from "./styles.module.scss"
 
 // mock player cards
 const playerCards: HistoryPlayerCardProps[] = [
   {
-    id: '1',
-    title: 'Pot',
-    description: 'Pot to boil water',
+    id: "1",
+    title: "Pot",
+    description: "Pot to boil water",
     year: 1800,
-    bc: false
+    bc: false,
   },
   {
-    id: '2',
-    title: 'Wheel',
-    description: 'really helps to drive',
+    id: "2",
+    title: "Wheel",
+    description: "really helps to drive",
     year: 1300,
-    bc: false
+    bc: false,
   },
   {
-    id: '3',
-    title: 'Sugar',
-    description: 'makes tea tasty',
+    id: "3",
+    title: "Sugar",
+    description: "makes tea tasty",
     year: 1200,
-    bc: false
-  }
+    bc: false,
+  },
 ]
 
 // display a list of player cards
@@ -37,6 +40,4 @@ const PlayerCardList = () => {
   )
 }
 
-export {
-  PlayerCardList
-}
+export { PlayerCardList, playerCards }
