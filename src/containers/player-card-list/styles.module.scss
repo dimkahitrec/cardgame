@@ -1,3 +1,15 @@
 .playerCardList {
   display: flex;
+  border: 5px solid;
+  border-radius: 15px;
+  border-color: white;
+  padding: 10px;
+  margin: 10px;
+  background-image: url("https://img.freepik.com/premium-photo/beige-dirty-empty-old-paper-background-paper-texture_255485-443.jpg?w=2000");
+
+  .backGroundColorandSize {
+    color: black;
+    background-color: white;
+    height: 20%;
+  }
 }
