@@ -33,6 +33,11 @@ const playerCards: HistoryPlayerCardProps[] = [
 const PlayerCardList = () => {
   return (
     <div className={styles.playerCardList}>
+      <div className={styles.backGroundColorandSize}>
+        Player: {""}
+        <br />
+        Total amount of cards: {playerCards.length}
+      </div>
       {playerCards.map((playerCard) => (
         <HistoryPlayerCard key={playerCard.id} {...playerCard} />
       ))}
