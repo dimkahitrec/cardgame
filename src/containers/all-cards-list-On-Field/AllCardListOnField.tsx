@@ -20,8 +20,6 @@ const CardsList = (props: any) => {
     }
   }, [props])
 
-  console.log(sortedArrays)
-
   return (
     <div>
       {sortedArrays.map((arr) => {
