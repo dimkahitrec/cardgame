@@ -45,6 +45,11 @@ const PlayerCardList = ({ id, items }: PlayerCardListProps) => {
   return (
     <SortableContainer id={id} items={items} className={styles.playerCardList}>
       <SortableContext items={items} strategy={horizontalListSortingStrategy}>
+        <div className={styles.backGroundColorandSize}>
+          Player: {""}
+          <br />
+          Total amount of cards: {playerCards.length}
+        </div>
         {items.map((playerCard) => (
           <HistoryPlayerCard key={playerCard.id} {...playerCard} />
         ))}
