@@ -9,7 +9,17 @@
     align-items: center;
     padding: 1rem;
     width: 10rem;
+    border: 5px solid;
+    border-radius: 15px;
+    border-color: white;
+    margin: 10px;
+    background-image: url("https://img.freepik.com/premium-photo/beige-dirty-empty-old-paper-background-paper-texture_255485-443.jpg?w=2000");
 
+    .backGroundColorandSize {
+      color: black;
+      background-color: white;
+      height: 20%;
+    }
 
     &:not(.disabled) {
       cursor: pointer;
