@@ -7,7 +7,7 @@ import {
   MeasuringStrategy,
 } from "@dnd-kit/core"
 import { FieldCardList } from "../../containers/field-card-list"
-import { PlayerCardList } from "../../containers/player-card-list"
+import { PlayerCardList, playerCards } from "../../containers/player-card-list"
 import { MockFieldCards, MockPlayerCards } from "../../mock"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { type GameListMap, GameListTypes } from "../../types"
@@ -15,6 +15,9 @@ import { useCollisionDetectionStrategy } from "./hooks/use-collision-detection-s
 import { findContainer } from "./helpers/findContainer"
 import { arrayMove } from "@dnd-kit/sortable"
 import styles from "./styles.module.scss"
+import HistoryFieldCard from "../../containers/history-field-card/HistoryFieldCard"
+import { AllCardDeckDisplay } from "../../containers/all-card-deck"
+import { CardsList } from "../../containers/all-cards-list-On-Field/AllCardListOnField"
 
 // init state
 // todo: use cards from backend and shuffle them
@@ -185,6 +188,13 @@ const GamePage = () => {
             items={items[GameListTypes.Player]}
           />
         </div>
+        <>
+          {/* cards that players put on the field */}
+          <PlayerCardList />
+          <HistoryFieldCard />
+          <AllCardDeckDisplay />
+          <CardsList player1Cards={playerCards} player2Cards={playerCards} />
+        </>
       </div>
     </DndContext>
   )
