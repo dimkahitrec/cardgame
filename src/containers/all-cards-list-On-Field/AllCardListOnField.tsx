@@ -2,7 +2,18 @@ import { useEffect, useState } from "react"
 
 function sorting(arr: any) {
   const sortedArray = arr.sort((a: any, b: any) => {
-    return b.year - a.year
+    if ((a.bc === true) && (b.bc === true)) {
+      return (-b.year) > (-a.year)
+    }
+
+    if (a.bc === true) {
+      return true
+    }
+    if (b.bc === true) {
+      return false
+    }
+
+    return b.year - a.year 
   })
   return sortedArray
 }
