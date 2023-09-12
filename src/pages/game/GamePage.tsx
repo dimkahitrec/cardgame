@@ -7,6 +7,7 @@ import {
   MeasuringStrategy,
 } from "@dnd-kit/core"
 import { FieldCardList } from "../../containers/field-card-list"
+import WonLooseState from "../../containers/won-loose-state/WonLooseState"
 import { PlayerCardList, playerCards } from "../../containers/player-card-list"
 import { MockFieldCards, MockPlayerCards } from "../../mock"
 import { useCallback, useEffect, useRef, useState } from "react"
@@ -190,7 +191,7 @@ const GamePage = () => {
         </div>
         <>
           {/* cards that players put on the field */}
-          <PlayerCardList />
+          <WonLooseState />
           <HistoryFieldCard />
           <AllCardDeckDisplay />
           <CardsList player1Cards={playerCards} player2Cards={playerCards} />
