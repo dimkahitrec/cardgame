@@ -30,12 +30,13 @@ const playerCards: HistoryPlayerCardProps[] = [
 ]
 
 const lastNewCard = {
-    id: "4",
-    title: "Stone Age Tool",
-    description: "These prehistoric Stone Age tools were handmade by early nomadic settlers in Denmark over 7,000 years ago. They were crafted using a technique known as flintknapping, the process of shaping stone into tools or weapons by striking it with another hard object. This process creates a unique finish as each strike would remove a small flake of stone, leading to a scalloped and intricately patterned surface",
-    year: 5000,
-    bc: true,
-  }
+  id: "4",
+  title: "Stone Age Tool",
+  description:
+    "These prehistoric Stone Age tools were handmade by early nomadic settlers in Denmark over 7,000 years ago. They were crafted using a technique known as flintknapping, the process of shaping stone into tools or weapons by striking it with another hard object. This process creates a unique finish as each strike would remove a small flake of stone, leading to a scalloped and intricately patterned surface",
+  year: 5000,
+  bc: true,
+}
 
 playerCards.push(lastNewCard)
 
@@ -47,6 +48,8 @@ const PlayerCardList = () => {
         Player: {""}
         <br />
         Total amount of cards: {playerCards.length}
+        <button>Button 1</button>
+        <button>Button 2</button>
       </div>
       {playerCards.map((playerCard) => (
         <HistoryPlayerCard key={playerCard.id} {...playerCard} />
