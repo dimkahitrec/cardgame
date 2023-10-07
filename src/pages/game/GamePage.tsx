@@ -19,6 +19,7 @@ import styles from "./styles.module.scss"
 import HistoryFieldCard from "../../containers/history-field-card/HistoryFieldCard"
 import { AllCardDeckDisplay } from "../../containers/all-card-deck"
 import { CardsList } from "../../containers/all-cards-list-On-Field/AllCardListOnField"
+import WaitingScreen from "../../containers/waiting-screen/WaitingScreen"
 
 // init state
 // todo: use cards from backend and shuffle them
@@ -57,6 +58,7 @@ const GamePage = () => {
   }, [items])
 
   return (
+<<<<<<< HEAD
     <DndContext
       sensors={sensors}
       measuring={{
@@ -198,6 +200,17 @@ const GamePage = () => {
         </>
       </div>
     </DndContext>
+=======
+    <>
+      {/* cards that players put on the field */}
+      <WonLooseState />
+      <PlayerCardList />
+      <HistoryFieldCard />
+      <AllCardDeckDisplay />
+      <CardsList player1Cards={playerCards} player2Cards={playerCards} />
+      <WaitingScreen />
+    </>
+>>>>>>> 6cadb18 (add component of waitinscreen)
   )
 }
 

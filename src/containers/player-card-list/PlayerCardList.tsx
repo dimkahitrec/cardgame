@@ -54,7 +54,6 @@ playerCards.push(lastNewCard)
 // display a list of player cards
 const PlayerCardList = ({ id, items }: PlayerCardListProps) => {
   return (
-<<<<<<< HEAD
     <SortableContainer id={id} items={items} className={styles.playerCardList}>
       <SortableContext items={items} strategy={horizontalListSortingStrategy}>
         <div className={styles.backGroundColorandSize}>
@@ -67,20 +66,6 @@ const PlayerCardList = ({ id, items }: PlayerCardListProps) => {
         ))}
       </SortableContext>
     </SortableContainer>
-=======
-    <div className={styles.playerCardList}>
-      <div className={styles.backGroundColorandSize}>
-        Player: {""}
-        <br />
-        Total amount of cards: {playerCards.length}
-        <button>Button 1</button>
-        <button>Button 2</button>
-      </div>
-      {playerCards.map((playerCard) => (
-        <HistoryPlayerCard key={playerCard.id} {...playerCard} />
-      ))}
-    </div>
->>>>>>> f213c5f (add 2 buttons to test prevent tab and pointer events)
   )
 }
 
