@@ -63,14 +63,16 @@ const WaitingScreen = () => {
     preventTabEvent()
     preventDragNDrop()
     preventPointers()
+
+    return (
+      <div>
+        <div className={styles.loader}></div>
+        Waiting other player turn
+      </div>
+    )
   }
 
-  return (
-    <div>
-      <div className={styles.loader}></div>
-      Waiting other player turn
-    </div>
-  )
+  return <div></div>
 }
 
 export default WaitingScreen
