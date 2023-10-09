@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
+import { HistoryCard as HistoryPlayerCardProps } from "./types"
 
 function sorting(arr: any) {
   const sortedArray = arr.sort((a: any, b: any) => {
-    if ((a.bc === true) && (b.bc === true)) {
-      return (-b.year) > (-a.year)
+    if (a.bc === true && b.bc === true) {
+      return -b.year > -a.year
     }
 
     if (a.bc === true) {
@@ -13,27 +14,34 @@ function sorting(arr: any) {
       return false
     }
 
-    return b.year - a.year 
+    return b.year - a.year
   })
   return sortedArray
 }
 
-const CardsList = (props: any) => {
-  const { player1Cards, player2Cards } = props
+// const CardsList = (props) => {
+//   const { player1Cards, player2Cards } = props
 
-  const setMergeArrays = [...player1Cards, ...player2Cards]
+const CardsList = ({
+  player1Cards,
+  player2Cards,
+}: {
+  player1Cards: HistoryPlayerCardProps
+  player2Cards: HistoryPlayerCardProps
+}) => {
+  const setMergeArrays = [...[player1Cards], ...[player2Cards]]
 
-  const [sortedArrays, setSortedArrays] = useState<any[]>([])
+  const [sortedArrays, setSortedArrays] = useState([])
 
   useEffect(() => {
     return () => {
       setSortedArrays(sorting(setMergeArrays))
     }
-  }, [props])
+  }, [setMergeArrays]) // props
 
   return (
     <div>
-      {sortedArrays.map((arr) => {
+      {sortedArrays.map((arr: HistoryPlayerCardProps) => {
         return (
           <div>
             <h1 key={arr.id}>{arr.title}</h1>

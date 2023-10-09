@@ -6,9 +6,9 @@ const AllCardDeck = ({ id, title }: AllCardDeckProps) => {
   const [counterNumber, setCounter] = useState(25)
   return (
     <div className={styles.AllCardDeck}>
-      <div className={styles.AllCardDeckExtend_before1}></div>
-      <div className={styles.AllCardDeckExtend_before2}></div>
-      <div className={styles.AllCardDeckExtend_before3}></div>
+      <div className={styles.AllCardDeckExtend_layer_behind_first}></div>
+      <div className={styles.AllCardDeckExtend_layer_behind_second}></div>
+      <div className={styles.AllCardDeckExtend_layer_behind_third}></div>
       <div className={styles.textCenter}>{counterNumber}</div>
     </div>
   )
@@ -18,7 +18,7 @@ const AllCardDeckMap: AllCardDeckProps[] = [
   {
     id: "1",
     title: "Добор",
-    counter: NaN,
+    counter: 0,
   },
 ]
 

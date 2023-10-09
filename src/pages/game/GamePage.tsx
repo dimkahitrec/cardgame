@@ -4,6 +4,7 @@ import HistoryFieldCard from "../../containers/history-field-card/HistoryFieldCa
 import { AllCardDeckDisplay } from "../../containers/all-card-deck"
 import { CardsList } from "../../containers/all-cards-list-On-Field/AllCardListOnField"
 import WaitingScreen from "../../containers/waiting-screen/WaitingScreen"
+import { HistoryCard } from "../../containers/history-player-card/types"
 
 const GamePage = () => {
   return (
