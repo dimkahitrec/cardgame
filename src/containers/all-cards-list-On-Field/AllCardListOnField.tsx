@@ -1,52 +1,44 @@
-import { useEffect, useState } from "react"
-import { HistoryCard as HistoryPlayerCardProps } from "./types"
+import { useMemo } from "react"
+import { HistoryCard, HistoryCard as HistoryPlayerCardProps } from "./types"
+import { CardsPropsType } from "./types"
 
-function sorting(arr: any) {
-  const sortedArray = arr.sort((a: any, b: any) => {
-    if (a.bc === true && b.bc === true) {
-      return -b.year > -a.year
+function sorting(arr: HistoryCard[]) {
+  return arr.sort((a, b) => {
+    // both BC
+    if (a.bc && b.bc) {
+      return -b.year - -a.year
     }
 
-    if (a.bc === true) {
-      return true
-    }
-    if (b.bc === true) {
-      return false
+    // one date of BC
+    if (a.bc || b.bc) {
+      if (a.bc) {
+        return 1
+      }
+      return -1
     }
 
+    // both dates AD
     return b.year - a.year
   })
-  return sortedArray
 }
 
-// const CardsList = (props) => {
-//   const { player1Cards, player2Cards } = props
+const CardsList = (props: CardsPropsType) => {
+  const { playerOneCards, playerTwoCards } = props
 
-const CardsList = ({
-  player1Cards,
-  player2Cards,
-}: {
-  player1Cards: HistoryPlayerCardProps
-  player2Cards: HistoryPlayerCardProps
-}) => {
-  const setMergeArrays = [...[player1Cards], ...[player2Cards]]
-
-  const [sortedArrays, setSortedArrays] = useState([])
-
-  useEffect(() => {
-    return () => {
-      setSortedArrays(sorting(setMergeArrays))
-    }
-  }, [setMergeArrays]) // props
+  const sortedArray = useMemo(() => {
+    return sorting([...playerOneCards, ...playerTwoCards])
+  }, [props.playerOneCards, props.playerTwoCards])
 
   return (
     <div>
-      {sortedArrays.map((arr: HistoryPlayerCardProps) => {
+      {sortedArray.map((card: HistoryPlayerCardProps) => {
         return (
           <div>
-            <h1 key={arr.id}>{arr.title}</h1>
-            <h2 key={arr.id}>{arr.year}</h2>
-            <h3 key={arr.id}>{arr.description}</h3>
+            <h1 key={card.id}>{card.title}</h1>
+            <h2 key={card.id}>{card.year}</h2>
+            <h3 key={card.id}>{card.description}</h3>
+            <h4 key={card.id}>{card.bc.toString()}</h4>
+            <hr />
           </div>
         )
       })}
