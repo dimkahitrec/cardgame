@@ -6,4 +6,9 @@ type HistoryCard = {
   bc: boolean // before christ. indicates if the inventiona was created before christ
 }
 
-export type { HistoryCard }
+type CardsPropsType = {
+  playerOneCards: HistoryCard[]
+  playerTwoCards: HistoryCard[]
+}
+
+export type { HistoryCard, CardsPropsType }
