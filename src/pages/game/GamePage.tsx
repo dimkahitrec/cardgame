@@ -16,7 +16,7 @@ import { useCollisionDetectionStrategy } from "./hooks/use-collision-detection-s
 import { findContainer } from "./helpers/findContainer"
 import { arrayMove } from "@dnd-kit/sortable"
 import styles from "./styles.module.scss"
-import HistoryFieldCard from "../../containers/history-field-card/HistoryFieldCard"
+import { HistoryFieldCard } from "../../containers/history-field-card/HistoryFieldCard"
 import { AllCardDeckDisplay } from "../../containers/all-card-deck"
 import { CardsList } from "../../containers/all-cards-list-On-Field/AllCardListOnField"
 import WaitingScreen from "../../containers/waiting-screen/WaitingScreen"
