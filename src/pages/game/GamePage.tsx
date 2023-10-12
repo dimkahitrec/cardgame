@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   DndContext,
   useSensors,
@@ -27,6 +28,14 @@ const gameListMap: GameListMap = {
   [GameListTypes.Player]: MockPlayerCards,
   [GameListTypes.Field]: MockFieldCards,
 }
+=======
+import WonLooseState from "../../containers/won-loose-state/WonLooseState"
+import { PlayerCardList, playerCards } from "../../containers/player-card-list"
+import HistoryFieldCard from "../../containers/history-field-card/HistoryFieldCard"
+import { AllCardDeckDisplay } from "../../containers/all-card-deck"
+import { CardsList } from "../../containers/all-cards-list-On-Field/AllCardListOnField"
+import WaitingScreen from "../../containers/waiting-screen/WaitingScreen"
+>>>>>>> d5d5da2d168ed0d53a9306936453d6355358169e
 
 const GamePage = () => {
   const recentlyMovedToNewContainer = useRef(false)
@@ -58,6 +67,7 @@ const GamePage = () => {
   }, [items])
 
   return (
+<<<<<<< HEAD
     <DndContext
       sensors={sensors}
       measuring={{
@@ -200,6 +210,17 @@ const GamePage = () => {
         </>
       </div>
     </DndContext>
+=======
+    <>
+      {/* cards that players put on the field */}
+      <WonLooseState />
+      <PlayerCardList />
+      <HistoryFieldCard />
+      <AllCardDeckDisplay />
+      <CardsList playerOneCards={playerCards} playerTwoCards={playerCards} />
+      <WaitingScreen />
+    </>
+>>>>>>> d5d5da2d168ed0d53a9306936453d6355358169e
   )
 }
 

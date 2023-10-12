@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 import { type UniqueIdentifier } from "@dnd-kit/core"
+=======
+>>>>>>> d5d5da2d168ed0d53a9306936453d6355358169e
 import {
   HistoryPlayerCard,
   type HistoryPlayerCardProps,
 } from "../history-player-card"
 import styles from "./styles.module.scss"
+<<<<<<< HEAD
 import { SortableContainer } from "../sortable"
 import {
   SortableContext,
@@ -14,6 +18,8 @@ type PlayerCardListProps = {
   id: UniqueIdentifier
   items: HistoryPlayerCardProps[]
 }
+=======
+>>>>>>> d5d5da2d168ed0d53a9306936453d6355358169e
 
 // mock player cards
 const playerCards: HistoryPlayerCardProps[] = [
@@ -54,6 +60,7 @@ playerCards.push(lastNewCard)
 // display a list of player cards
 const PlayerCardList = ({ id, items }: PlayerCardListProps) => {
   return (
+<<<<<<< HEAD
     <SortableContainer id={id} items={items} className={styles.playerCardList}>
       <SortableContext items={items} strategy={horizontalListSortingStrategy}>
         <div className={styles.backGroundColorandSize}>
@@ -66,6 +73,20 @@ const PlayerCardList = ({ id, items }: PlayerCardListProps) => {
         ))}
       </SortableContext>
     </SortableContainer>
+=======
+    <div className={styles.playerCardList}>
+      <div className={styles.backGroundColorandSize}>
+        Player: {""}
+        <br />
+        Total amount of cards: {playerCards.length}
+        <button>Button 1</button>
+        <button>Button 2</button>
+      </div>
+      {playerCards.map((playerCard) => (
+        <HistoryPlayerCard key={playerCard.id} {...playerCard} />
+      ))}
+    </div>
+>>>>>>> d5d5da2d168ed0d53a9306936453d6355358169e
   )
 }
 
