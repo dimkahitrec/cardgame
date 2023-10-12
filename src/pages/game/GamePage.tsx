@@ -58,7 +58,6 @@ const GamePage = () => {
   }, [items])
 
   return (
-<<<<<<< HEAD
     <DndContext
       sensors={sensors}
       measuring={{
@@ -197,20 +196,10 @@ const GamePage = () => {
           <HistoryFieldCard />
           <AllCardDeckDisplay />
           <CardsList player1Cards={playerCards} player2Cards={playerCards} />
+          <WaitingScreen />
         </>
       </div>
     </DndContext>
-=======
-    <>
-      {/* cards that players put on the field */}
-      <WonLooseState />
-      <PlayerCardList />
-      <HistoryFieldCard />
-      <AllCardDeckDisplay />
-      <CardsList player1Cards={playerCards} player2Cards={playerCards} />
-      <WaitingScreen />
-    </>
->>>>>>> 6cadb18 (add component of waitinscreen)
   )
 }
 
